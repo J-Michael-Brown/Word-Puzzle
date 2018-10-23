@@ -4,19 +4,30 @@ $(document).ready(function() {
 
     var inputSentence = $("#userSentence").val();
     var splitSentence = inputSentence.split(" ");
+    var vowels = ["a", "e", "i", "o", "u"];
 
 
     var newSentence = splitSentence.map(function(splitword) {
-      if (splitword.length < 3) {
-        return splitword + "aye";
-      } else if (splitword.length >= 3) {
-        return splitword + "whaaaaaaaaat"
-      }
+      splitword = splitword.split("");
 
-})
+      splitword.forEach(function(letter) {
+        vowels.forEach(function(vowel) {
+          if (vowel === letter) {
+            letter = "-";
+          }
+        })
+        alert(letter)
+      });
 
-  var brandNewFuckingSentence = newSentence.reverse().join(" ");
+      splitword = splitword.join("");
+
+      return splitword;
+
+    });
+
+  var brandNewFuckingSentence = newSentence.join(" ");
 
   $("#sentenceOutput").text(brandNewFuckingSentence);
+  debugger;
   });
 });
