@@ -3,31 +3,26 @@ $(document).ready(function() {
     event.preventDefault();
 
     var inputSentence = $("#userSentence").val();
-    var splitSentence = inputSentence.split(" ");
+    var splitSentence = inputSentence.split("");
     var vowels = ["a", "e", "i", "o", "u"];
+    var brandNewSentence = [];
 
-
-    var newSentence = splitSentence.map(function(splitword) {
-      splitword = splitword.split("");
-
-      splitword.forEach(function(letter) {
+    splitSentence.forEach(function(splitLetter) {
+        // for (var i = 0; i < vowels.length; i++) {
+        //   if (splitLetter === vowels[i]) {
+        //     splitLetter = "-";
+        //   }
+        // } --- does the same  thing, but as a 'for loop'
         vowels.forEach(function(vowel) {
-          if (vowel === letter) {
-            letter = "-";
+          if (splitLetter === vowel) {
+            splitLetter = "-";
           }
         })
-        alert(letter)
-      });
-
-      splitword = splitword.join("");
-
-      return splitword;
-
+        brandNewSentence.push(splitLetter);
     });
 
-  var brandNewFuckingSentence = newSentence.join(" ");
+  var brandNewSentence = brandNewSentence.join("");
 
-  $("#sentenceOutput").text(brandNewFuckingSentence);
-  debugger;
+  $("#sentenceOutput").text(brandNewSentence);
   });
 });
